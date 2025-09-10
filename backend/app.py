@@ -4,8 +4,12 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 import joblib
 import os
+
 app = Flask(__name__)
-CORS(app, origins=["http://localhost:5173"])  # allow frontend (React) to talk to backend
+CORS(app, origins=[
+    "http://localhost:5173",
+    "https://housing-prediction-2nx4.vercel.app/"
+]) # allow frontend (React) to talk to backend
 
 # ---------- Step 1: Load dataset ----------
 data = pd.read_csv("backend/house_prices.csv")
@@ -34,6 +38,8 @@ def predict():
     prediction = model.predict([[area, bedrooms, bathrooms, stories, parking]])
 
     return jsonify({"predicted_price": round(prediction[0], 2)})
+
+
 
 
 if __name__ == "__main__":
