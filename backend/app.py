@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS   # 🚀 fixes CORS issue
+from flask_cors import CORS   #  fixes CORS issue
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 import joblib
@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"])  # allow frontend (React) to talk to backend
 
 # ---------- Step 1: Load dataset ----------
-data = pd.read_csv("house_prices.csv")
+data = pd.read_csv("backend/house_prices.csv")
 
 X = data[["area", "bedrooms", "bathrooms", "stories", "parking"]]  # features
 y = data["price"]  # target
