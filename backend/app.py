@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 CORS(app, origins=[
     "http://localhost:5173",
-    "https://housing-prediction-2nx4.vercel.app/"
+    "https://housing-prediction-2nx4.vercel.app"
 ]) # allow frontend (React) to talk to backend
 
 # ---------- Step 1: Load dataset ----------
