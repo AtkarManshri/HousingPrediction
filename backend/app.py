@@ -3,7 +3,7 @@ from flask_cors import CORS   #  fixes CORS issue
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 import joblib
-
+import os
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:5173"])  # allow frontend (React) to talk to backend
 
@@ -37,4 +37,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use Render's port or default 5000
+    app.run(host="0.0.0.0", port=port, debug=True)
